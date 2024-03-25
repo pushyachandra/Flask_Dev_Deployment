@@ -1,3 +1,8 @@
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
 from flask import Flask,render_template,request
 
 app = Flask('__name__')
@@ -33,8 +38,8 @@ def calculator():
     return render_template('calculator.html', result=result)
 
 if(__name__=='__main__'):
-    app.run()
-
-
-if(__name__=='__main__'):
-    app.run()
+    app.run(
+        host=os.getenv('URL'),
+        port=os.getenv('PORT'),
+        debug=True
+    )
